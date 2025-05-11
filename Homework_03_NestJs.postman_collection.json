@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "cba6de04-9c44-427e-9fc6-9cbfcca92d11",
+		"name": "Homework_03_NestJs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42864586"
+	},
+	"item": [
+		{
+			"name": "Create new users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Evan Wright\",\r\n  \"email\": \"evan.wright@example.com\",\r\n  \"role\": \"User\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Error Handling in Node.js\",\r\n  \"content\": \"Best practices for handling errors in a Node.js application.\",\r\n  \"authorId\": \"f1611815-c6fd-4425-89b0-13a8c240d2fb\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/8b6414ac-584b-4bdf-9629-14f10548448d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"8b6414ac-584b-4bdf-9629-14f10548448d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get post by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/9df90eec-eb26-4798-ad45-b58f6db5cbcd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"9df90eec-eb26-4798-ad45-b58f6db5cbcd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get posts by user id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/8b6414ac-584b-4bdf-9629-14f10548448d/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"8b6414ac-584b-4bdf-9629-14f10548448d",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": \"24bd6b6b-fbbb-4ddb-8beb-25862ff1f71e\",\r\n        \"name\": \"Bob Bobski\",\r\n        \"email\": \"bob.bobski@example.com\",\r\n        \"role\": \"User\",\r\n        \"posts\": []\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/24bd6b6b-fbbb-4ddb-8beb-25862ff1f71e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"24bd6b6b-fbbb-4ddb-8beb-25862ff1f71e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"cdd2b3cf-5a2c-4152-ad72-4c884dbab545\",\r\n        \"title\": \"Basic TypeScript\",\r\n        \"content\": \"Guide to TypeScript for JavaScript developers.\",\r\n        \"authorId\": \"24bd6b6b-fbbb-4ddb-8beb-25862ff1f71e\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/posts/cdd2b3cf-5a2c-4152-ad72-4c884dbab545",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"cdd2b3cf-5a2c-4152-ad72-4c884dbab545"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/f1611815-c6fd-4425-89b0-13a8c240d2fb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"f1611815-c6fd-4425-89b0-13a8c240d2fb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/80e7b53f-f671-4409-ac0b-528c5b62f175",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"80e7b53f-f671-4409-ac0b-528c5b62f175"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
