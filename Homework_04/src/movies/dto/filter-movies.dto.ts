@@ -1,19 +1,7 @@
-import { IsOptional, IsEnum, IsNumber, IsString } from 'class-validator';
+import { IsOptional, IsEnum, IsNumber, IsString, Min } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-
-export enum Genre {
-  ACTION = 'action',
-  COMEDY = 'comedy',
-  DRAMA = 'drama',
-  HORROR = 'horror',
-  SCI_FI = 'sci_fi',
-  ROMANCE = 'romance',
-  DOCUMENTARY = 'documentary',
-  ANIMATION = 'animation',
-  THRILLER = 'thriller',
-  FANTASY = 'fantasy',
-}
+import { Genre } from '../enums/genre.enum';
 
 export class FilterMoviesDto {
   @ApiPropertyOptional({ enum: Genre })
@@ -53,4 +41,21 @@ export class FilterMoviesDto {
   @IsOptional()
   @IsEnum(['ASC', 'DESC'])
   sortOrder?: 'ASC' | 'DESC';
+
+  @ApiPropertyOptional({ description: 'Page number (starts at 1)', example: 1 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  page?: number;
+
+  @ApiPropertyOptional({
+    description: 'Movies per page',
+    example: 10,
+  })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  pageSize?: number;
 }

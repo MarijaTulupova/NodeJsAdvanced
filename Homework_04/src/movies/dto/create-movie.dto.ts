@@ -11,19 +11,7 @@ import {
   IsUrl,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-
-enum Genre {
-  ACTION = 'action',
-  COMEDY = 'comedy',
-  DRAMA = 'drama',
-  HORROR = 'horror',
-  SCI_FI = 'sci_fi',
-  ROMANCE = 'romance',
-  DOCUMENTARY = 'documentary',
-  ANIMATION = 'animation',
-  THRILLER = 'thriller',
-  FANTASY = 'fantasy',
-}
+import { Genre } from '../enums/genre.enum';
 
 export class CreateMovieDto {
   @IsString()
@@ -92,5 +80,5 @@ export class CreateMovieDto {
     description: 'URL to the movie poster image',
     example: 'https://image.tmdb.org/t/p/original/poster.jpg',
   })
-  poster_url?: string;
+  posterUrl?: string;
 }

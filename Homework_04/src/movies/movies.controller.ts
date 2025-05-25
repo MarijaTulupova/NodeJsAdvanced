@@ -18,6 +18,7 @@ import {
   ApiOkResponse,
   ApiOperation,
 } from '@nestjs/swagger';
+import { PaginatedMoviesDto } from './dto/paginated-movies.dto';
 
 @Controller('movies')
 export class MoviesController {
@@ -32,8 +33,8 @@ export class MoviesController {
 
   @Get()
   @ApiOperation({ summary: 'Get all movies with filtering and sorting' })
-  @ApiOkResponse({ type: [Movie] })
-  findAll(@Query() filter: FilterMoviesDto): Promise<Movie[]> {
+  @ApiOkResponse({ type: PaginatedMoviesDto })
+  findAll(@Query() filter: FilterMoviesDto): Promise<PaginatedMoviesDto> {
     return this.moviesService.findAll(filter);
   }
 

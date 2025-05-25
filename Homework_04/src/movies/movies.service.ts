@@ -24,7 +24,9 @@ export class MoviesService {
     }
   }
 
-  async findAll(filter: FilterMoviesDto): Promise<Movie[]> {
+  async findAll(
+    filter: FilterMoviesDto,
+  ): Promise<{ payload: Movie[]; total: number }> {
     const query = this.movieRepository.createQueryBuilder('movie');
 
     if (filter.genre)
@@ -51,7 +53,18 @@ export class MoviesService {
 
     query.orderBy(`movie.${sortBy}`, sortOrder);
 
-    return query.getMany();
+    const page = filter.page || 1;
+    const pageSize = filter.pageSize || 10;
+    const skip = (page - 1) * pageSize;
+
+    query.skip(skip).take(pageSize);
+
+    const [movies, total] = await query.getManyAndCount();
+
+    return {
+      payload: movies,
+      total,
+    };
   }
 
   async findOne(id: string): Promise<Movie> {
@@ -61,11 +74,23 @@ export class MoviesService {
   }
 
   async update(id: string, updateMovieDto: UpdateMovieDto): Promise<Movie> {
+    const movie = await this.movieRepository.findOneBy({ id });
+    if (!movie) {
+      throw new BadRequestException(
+        `Cannot update. Movie with id ${id} not found`,
+      );
+    }
+
     await this.movieRepository.update(id, updateMovieDto);
     return this.findOne(id);
   }
 
   async remove(id: string): Promise<void> {
-    await this.movieRepository.delete(id);
+    const result = await this.movieRepository.delete(id);
+    if (result.affected === 0) {
+      throw new BadRequestException(
+        `Cannot delete. Movie with id ${id} not found`,
+      );
+    }
   }
 }
